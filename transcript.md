@@ -125,5 +125,6 @@ docker-compose rm
 
 ## 參考資料
 https://medium.com/unorthodox-paranoid/docker-tutorial-101-c3808b899ac6
-https://medium.com/unorthodox-paranoid/docker-tutorial-101-c3808b899ac6
 https://philipzheng.gitbook.io/docker_practice/
+https://www.itread01.com/xxell.html
+https://blog.techbridge.cc/2018/09/07/docker-compose-tutorial-intro/

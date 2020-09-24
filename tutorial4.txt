@@ -1,0 +1,38 @@
+* laradock
+使用laradock快速部署laravel所需要的環境
+
+學習目標: 
+1. 了解如何使用laradock部署laravel所需環境
+
+操作步驟
+step1. 使用git將laradock專案複製回本地端
+git clone https://github.com/Laradock/laradock.git
+
+step2. 轉移工作目錄到laradock底下
+cd laradock
+
+step3. 複製env-example並更改名稱為.env
+cp env-example .env
+
+step4. 修改.env檔
+# 在最頂端加入
+DB_HOST=mysql
+
+# 搜尋 MYSQL_VERSION，設定您的 DB 版本
+# MYSQL_VERSION=latest
+# 改為
+MYSQL_VERSION=5.7
+
+step5. 使用docker-compose指令部署laravel所需環境
+docker-compose up -d apache2 mysql
+
+step6. 進到容器內部
+docker-compose exec --user=laradock workspace bash
+
+step7. 使用composer下載laravel專案
+composer create-project --prefer-dist laravel/laravel project "5.4.*"
+
+step8. 會發現本地端多了一個project的資料夾,裡面放的就是laravel專案
+
+step9. 打開瀏覽器輸入
+    localhost/project/public/

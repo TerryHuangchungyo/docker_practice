@@ -1,0 +1,27 @@
+* docker-compose
+docker_compose_demo 實作lamp環境
+學習目標: 
+1. 了解docker_compose.yml檔結構
+2. 基礎docker-compose指令
+
+step1. 轉移工作目錄到docker_compose_demo底下
+    cd docker_compose_demo
+step2. 執行docker-compose指令，自動部署容器
+    docker-compose up -d
+step3. 到瀏覽器上方搜尋列輸入(正確的話會顯示Successfully connect to the mysql)
+    localhost/index.php
+step4. 嘗試在 docker_compose_demo/www 底下新增新的 html或php檔案
+step5. 在瀏覽器上方搜尋列輸入
+    localhost/<yourfile>.html
+    localhost/<yourfile>.php
+step6. 執行docker-compose ps指令觀察
+    docker-compose ps
+    docker ps
+step7. 執行docker images觀察有哪些映象檔
+    docker images
+step8. 執行docker-compose down指令終止服務
+    docker-compose down
+step9. 輸入docker ps -a觀察一下
+    docker ps -a
+step10. 輸入docker images觀察剛剛部署的應用所使用的映象檔是否還在
+    docker images

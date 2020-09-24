@@ -1,0 +1,26 @@
+version: '3'
+services:
+    apache:
+        image: ubuntu:apache #映象名為ubuntu，tag為apache
+        container_name: apache #執行後生成的容器名字為apache
+        build: . #使用當前路徑下的Dockerfile構造映象
+        ports:
+            - "80:80"
+        volumes:
+            - ./www:/var/www/html
+            - ./log/apache:/var/log/apache2
+        mem_limit: 1024m #最大記憶體使用不超過1024m
+        restart: always #容器重啟策略：當容器終止退出後，總是重啟容器，預設策略。
+        links:
+            - mysql
+    mysql:
+        image: mysql:5.5 #拉取mysql:5.5
+        ports:
+            - "3306:3306"
+        volumes:
+            - ./conf/my.cnf:/etc/my.cnf
+            - ./mysql:/var/lib/mysql
+            - ./log/mysql:/var/log/mysql
+        environment: #設定環境變數
+            - MYSQL_ROOT_PASSWORD=root #mysql密碼為root
+        mem_limit: 1024m #最大記憶體使用不超過1024m

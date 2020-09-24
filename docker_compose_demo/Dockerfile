@@ -1,5 +1,4 @@
 FROM ubuntu:14.04.4
-MAINTAINER reber <1070018473@qq.com>
 
 
 ENV AUTO_RUN_DIR /apache_init.d #定義會被容器自動執行的目錄

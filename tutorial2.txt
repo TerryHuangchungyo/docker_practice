@@ -1,2 +1,30 @@
-docker run --name mysql -e MYSQL_ROOT_PASSWORD=root -d mysql:5.5
-docker run -itd -p 80:80 --link mysql:db -v "$PWD"/www/:/var/www/html --name apache  apache-server
+* 多容器應用
+使用docker架設lamp環境
+
+學習目標: 
+1. 多容器應用
+2. 容器互連
+3. volumn
+
+操作步驟
+step1. 轉移工作目錄到demo2/sever底下
+    cd demo2/server
+step2. 觀察底下的Dockerfile
+step3. 運行mysql伺服器容器
+    docker run --name mysql -e MYSQL_ROOT_PASSWORD=root -d mysql:5.5
+step4. 製作映像檔
+    docker build -t apache-server .
+step5. 運行有apache + php環境的容器，並連結mysql容器
+    docker run -itd -p 80:80 --link mysql:db -v "$PWD"/www/:/var/www/html --name apache  apache-server
+step6. 打開瀏覽器輸入
+    localhost/database.php
+step7. 使用終端機進入容器
+    docker exec -it apache /bin/sh
+step8. 觀察/etc/hosts檔案並使用ping指令
+    cat /etc/hosts
+    ping db
+    exit
+step8. 停止所有容器
+    docker stop $(docker ps -aq)
+step9. 移除所有容器
+    docker rm $(docker ps -aq)

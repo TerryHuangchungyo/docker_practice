@@ -3,17 +3,17 @@
 demo 1 在容器中架設簡易apache伺服器環境
 學習目標: 
 1. 基礎Docker指令操作
-2. 映象檔操作: 打包,刪除,匯出,匯入, 列出
+2. 映象操作: 打包,刪除,匯出,匯入, 列出
 3. 容器基本操作: 運行, 停止, 移除, 列出, 從容器製作映象檔
 
 操作步驟:
 step1. 轉換工作目錄到demo1，觀察demo1資料夾底下有什麼
     cd demo1
-step2. 製作映象檔
+step2. 製作映象
     docker build -t apache-server:0.0.1 .
-step3. 觀察本地端倉庫擁有的映象檔
+step3. 觀察本地端倉庫擁有的映象
     docker images
-step4. 運行映象檔( 確認本地端port80沒有其他程序佔用 )
+step4. 運行映象( 確認本地端port80沒有其他程序佔用 )
     docker run -p 80:80 -dit --name apache-app apache-server:0.0.1
 step5. 到瀏覽器上方搜尋列輸入(正確的話會有一隻鯨魚)
     localhost/docker.html
@@ -37,13 +37,13 @@ step12. 觀察所有的容器狀態
     docker ps -a
 step13. 移除容器
     docker rm apache-app
-step14. 儲存映象檔
+step14. 儲存映象
     sudo docker save -o apache-server.tar apache-server:0.0.1
 step15. 映象檔更改名稱
     docker tag apache-server:0.0.1 apache-server:0.0.2
-step16. 刪除映像檔
+step16. 刪除映像
     docker rmi apache-server:0.0.1
-step17. 載入映象檔
+step17. 載入映象
     sudo docker load --input apache-server.tar
 step18. 再次運行容器
     docker run -p 80:80 -it --name apache-app apache-server:0.0.1 /bin/sh
@@ -59,18 +59,18 @@ step22. 重啟容器
 step23. 進入容器並觀察目錄下的東西( 應該會發現funny.txt還在 )
     docker exec -it apache-app /bin/sh
     ls
-step24. 將這個容器製作成映象檔
+step24. 將這個容器製作成映象
     sudo docker commit -m "Add funny.txt" -a "Terry_Huang" apache-app funny:v1
-step25. 觀察倉庫裡的映象檔(應該會發現多了一個 funny:v1)
+step25. 觀察倉庫裡的映象(應該會發現多了一個 funny:v1)
     docker images
 step26. 觀察剛剛製作的映象檔的訊息,作者
     docker inspect funny:v1 | grep "Author"
     docker inspect funny:v1 | grep "Comment"
-step27. 從剛剛製作的映象檔運行一個容器,並觀察目錄底下有沒有funny.txt
+step27. 從剛剛製作的映象運行一個容器,並觀察目錄底下有沒有funny.txt
     docker run -it --name apache-app2 funny:v1 /bin/sh
     ls
     exit
-step28. 從原本的映象檔運行一個容器,並觀察目錄底下有沒有funny.txt
+step28. 從原本的映象運行一個容器,並觀察目錄底下有沒有funny.txt
     docker run -it --name apache-app3 apache-server:0.0.1 /bin/sh
     ls
     exit 

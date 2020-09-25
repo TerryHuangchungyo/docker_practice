@@ -12,7 +12,7 @@ step1. 轉移工作目錄到demo2/sever底下
 step2. 觀察底下的Dockerfile
 step3. 運行mysql伺服器容器
     docker run --name mysql -e MYSQL_ROOT_PASSWORD=root -d mysql:5.5
-step4. 製作映像檔
+step4. 製作映像
     docker build -t apache-server .
 step5. 運行有apache + php環境的容器，並連結mysql容器
     docker run -itd -p 80:80 --link mysql:db -v "$PWD"/www/:/var/www/html --name apache  apache-server

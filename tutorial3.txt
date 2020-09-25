@@ -17,11 +17,11 @@ step5. 在瀏覽器上方搜尋列輸入
 step6. 執行docker-compose ps指令觀察
     docker-compose ps
     docker ps
-step7. 執行docker images觀察有哪些映象檔
+step7. 執行docker images觀察有哪些映象
     docker images
 step8. 執行docker-compose down指令終止服務
     docker-compose down
 step9. 輸入docker ps -a觀察一下
     docker ps -a
-step10. 輸入docker images觀察剛剛部署的應用所使用的映象檔是否還在
+step10. 輸入docker images觀察剛剛部署的應用所使用的映象是否還在
     docker images
